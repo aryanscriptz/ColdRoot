@@ -169,6 +169,3 @@ Potential future improvements include:
 **ColdRoot is an actively developed AI-image detection project.**
 
 The current version focuses on image-level AI-generation detection using a Transformer-based detector and multi-view inference.
-
-
-If this project is being submitted as an academic/hackathon project, you can also include the relevant project and team information here.
