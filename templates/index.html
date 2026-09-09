@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ColdRoot — Document Integrity & Image Forensics</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<main class="container">
+    <section id="uploadView">
+        <div class="brand">ColdRoot</div>
+        <p class="tagline">Detect suspicious edits, AI manipulation, and document tampering.</p>
+
+        <div id="dropZone" class="upload-card">
+            <div class="upload-icon">↑</div>
+            <h1>Check an image</h1>
+            <p>Upload a document, receipt, ID card, certificate, or ordinary image.</p>
+            <button id="uploadBtn">Upload Image</button>
+            <input id="fileInput" type="file" accept=".jpg,.jpeg,.png,.webp" hidden>
+            <div id="fileName" class="file-name"></div>
+        </div>
+    </section>
+
+    <section id="loadingView" class="hidden">
+        <div class="brand">ColdRoot</div>
+        <div class="loading-card">
+            <div class="spinner"></div>
+            <h2>Analyzing image...</h2>
+            <p>The first analysis can take longer while the AI model loads.</p>
+        </div>
+    </section>
+
+    <section id="resultView" class="hidden">
+        <div class="brand">ColdRoot</div>
+
+        <div id="verdictCard" class="result-card">
+            <span id="level" class="level"></span>
+            <h1 id="verdict"></h1>
+            <p id="explanation"></p>
+
+            <div class="score-grid">
+                <div class="metric"><span>Document confidence</span><strong id="documentConfidence"></strong></div>
+                <div class="metric"><span>Tampering likelihood</span><strong id="tamperProbability"></strong></div>
+                <div class="metric"><span>AI-generation likelihood</span><strong id="aiProbability"></strong></div>
+            </div>
+            <div class="bar"><div id="scoreBar"></div></div>
+            <div id="modeText" class="mode-text"></div>
+            <div class="note">Forensic indicators are probabilistic. A clean result cannot prove that a document is genuine.</div>
+        </div>
+
+        <div class="visuals">
+            <div>
+                <h3>Uploaded image</h3>
+                <img id="originalImage" alt="Uploaded image">
+            </div>
+            <div>
+                <h3>Forensic heatmap</h3>
+                <img id="heatmapImage" alt="Forensic heatmap">
+            </div>
+        </div>
+
+        <div class="forensic-panel">
+            <h3>Forensic signals</h3>
+            <div id="forensicGrid" class="forensic-grid"></div>
+        </div>
+
+        <div class="metadata">
+            <h3>Supporting evidence</h3>
+            <ul id="metadataList"></ul>
+        </div>
+
+        <button id="againBtn" class="secondary">Analyze another</button>
+    </section>
+
+    <p id="error" class="error hidden"></p>
+</main>
+<script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>
